@@ -34,7 +34,6 @@ Parse.Cloud.define("populateHedrick", function(request,response){
   	  	outputText += ', "CalorieFromFat" : ' + calfromfatOut[1];
 
   		//Total fat
-      //this is a test
 
     	//saturated fat
 
@@ -62,5 +61,10 @@ Parse.Cloud.define("populateHedrick", function(request,response){
 		console.error('request failed dawg');
 	});
 });
+
+//git commit -a
+//"write the message"
+//:wq
+//git push origin master
 
 
