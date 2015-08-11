@@ -34,6 +34,10 @@ Parse.Cloud.define("populateHedrick", function(request,response){
   	  	outputText += ', "CalorieFromFat" : ' + calfromfatOut[1];
 
   		//Total fat
+        var fat_re = new RegExp(/Total Fat:<\/strong>([^<]*)/);
+        var fatOut = fat_re.exec(httpResponse.text);
+        console.log(fatOut[1]);
+        outputText = ', "Fat" : ' + fatOut[1];
 
     	//saturated fat
 
