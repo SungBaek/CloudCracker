@@ -33,7 +33,11 @@ Parse.Cloud.define("populateHedrick", function(request,response){
   	  	console.log(calfromfatOut[1]);
   	  	outputText += ', "CalorieFromFat" : ' + calfromfatOut[1];
 
-  		//Total fatfdsfdf
+  		//Total fat
+        var fat_re = new RegExp(/Total Fat:<\/strong>([^<]*)/);
+        var fatOut = fat_re.exec(httpResponse.text);
+        console.log(fatOut[1]);
+        outputText += ', "Fat" :' + fatOut[1];
   		
 
     	//saturated fat
@@ -63,4 +67,6 @@ Parse.Cloud.define("populateHedrick", function(request,response){
 	});
 });
 
-
+//git commit -a
+//:wq
+//git push origin master
