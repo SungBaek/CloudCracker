@@ -11,7 +11,7 @@ Parse.Cloud.define("hello", function(request, response) {
 
 Parse.Cloud.define("populateHedrick", function(request,response){
 	Parse.Cloud.httpRequest({
-		url: "http://m.dining.ucla.edu/menu/nutritional.cfm?id=1420708590&r=Covel%20Dining"
+		url: "http://m.dining.ucla.edu/menu/nutritional.cfm?id=1420734706&r=Covel%20Dining"
 	}).then(function(httpResponse) {
 		//success
 		var html = httpResponse.text;
@@ -33,11 +33,8 @@ Parse.Cloud.define("populateHedrick", function(request,response){
   	  	console.log(calfromfatOut[1]);
   	  	outputText += ', "CalorieFromFat" : ' + calfromfatOut[1];
 
-  		//Total fat
-        var fat_re = new RegExp(/Total Fat:<\/strong>([^<]*)/);
-        var fatOut = fat_re.exec(httpResponse.text);
-        console.log(fatOut[1]);
-        outputText = ', "Fat" : ' + fatOut[1];
+  		//Total fatfdsfdf
+  		
 
     	//saturated fat
 
@@ -45,7 +42,7 @@ Parse.Cloud.define("populateHedrick", function(request,response){
 
     	//cholesterol
     
-  		 //sodium
+  		//sodium
 
 	    //Total Carbohydrate:
 
@@ -65,10 +62,5 @@ Parse.Cloud.define("populateHedrick", function(request,response){
 		console.error('request failed dawg');
 	});
 });
-
-//git commit -a
-//"write the message"
-//:wq
-//git push origin master
 
 
