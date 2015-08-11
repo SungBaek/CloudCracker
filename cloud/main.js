@@ -43,13 +43,13 @@ Parse.Cloud.define("populateHedrick", function(request,response){
     
   		 //sodium
 
-    //Total Carbohydrate:
+	    //Total Carbohydrate:
 
-    //Dietary Fiber: 
+    	//Dietary Fiber: 
 
-    //sugar
+    	//sugar
 
-    //protein
+    	//protein
 
 
 
