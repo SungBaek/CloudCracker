@@ -28,35 +28,67 @@ Parse.Cloud.define("populateHedrick", function(request,response){
  	  	console.log(calOut[1]);
   	  	outputText = '{ "Calorie" :' + calOut[1];
   	  	//calorie from fat
-  	  	var calfromfat_re = new RegExp(/Calories from Fat:([^<]*)/);
-  	  	var calfromfatOut = calfromfat_re.exec(httpResponse.text);
-  	  	console.log(calfromfatOut[1]);
-  	  	outputText += ', "CalorieFromFat" : ' + calfromfatOut[1];
+  	  	var calFromFat_re = new RegExp(/Calories from Fat:([^<]*)/);
+  	  	var calFromFatOut = calFromFat_re.exec(httpResponse.text);
+  	  	console.log(calFromFatOut[1]);
+  	  	outputText += ', "Calorie From Fat" : ' + calFromFatOut[1];
 
   		//Total fat
-        var fat_re = new RegExp(/Total Fat:<\/strong>([^<]*)/);
-        var fatOut = fat_re.exec(httpResponse.text);
-        console.log(fatOut[1]);
-        outputText += ', "Fat" :' + fatOut[1];
+        var totFat_re = new RegExp(/Total Fat:<\/strong>([^<]*)/);
+        var totFatOut = totFat_re.exec(httpResponse.text);
+        console.log(totFatOut[1]);
+        outputText += ', "Fat" :' + totFatOut[1];
   		
-
     	//saturated fat
+        var satFat_re = new RegExp(/Saturated Fat:([^<]*)/);
+        var satFatOut = satFat_re.exec(httpResponse.text);
+        console.log(satFatOut[1]);
+        outputText += ', "Saturated Fat" :' + satFatOut[1];
 
    	 	//Trans fat
+        var transFat_re = new RegExp(/Trans Fat:([^<]*)/);
+        var transFatOut = transFat_re.exec(httpResponse.text);
+        console.log(transFatOut[1]);
+        outputText += ', "Trans Fat" :' + transFatOut[1];
 
     	//cholesterol
-    
+        var chol_re = new RegExp(/Cholesterol:<\/strong>([^<]*)/);
+        var cholOut = chol_re.exec(httpResponse.text);
+        console.log(cholOut[1]);
+        outputText += ', "Cholesterol" :' + cholOut[1];
+
   		//sodium
+        var sod_re = new RegExp(/Sodium:<\/strong>([^<]*)/);
+        var sodOut = sod_re.exec(httpResponse.text);
+        console.log(sodOut[1]);
+        outputText += ', "Sodium" :' + sodOut[1];
 
 	    //Total Carbohydrate:
+        var totCarb_re = new RegExp(/Total Carbohydrate:<\/strong>([^<]*)/);
+        var totCarbOut = totCarb_re.exec(httpResponse.text);
+        console.log(totCarbOut[1]);
+        outputText += ', "Total Carbohydrate" :' + totCarbOut[1];
 
     	//Dietary Fiber: 
+        var fib_re = new RegExp(/Dietary Fiber:([^<]*)/);
+        var fibOut = fib_re.exec(httpResponse.text);
+        console.log(fibOut[1]);
+        outputText += ', "Dietary Fiber" :' + fibOut[1];
 
     	//sugar
+        var sug_re = new RegExp(/Sugars:([^<]*)/);
+        var sugOut = sug_re.exec(httpResponse.text);
+        console.log(sugOut[1]);
+        outputText += ', "Sugars" :' + sugOut[1];
 
     	//protein
+        var prot_re = new RegExp(/Protein:<\/strong>([^<]*)/);
+        var protOut = prot_re.exec(httpResponse.text);
+        console.log(protOut[1]);
+        outputText += ', "Protein" :' + protOut[1];
 
 
+      //end of nutrition facts
 
   	  	outputText += ' }';
     	var outputJSON = JSON.parse(outputText);
