@@ -99,6 +99,33 @@ Parse.Cloud.define("populateHedrick", function(request,response){
 	});
 });
 
+Parse.Cloud.define("populateDiningHallMenus", function(request,response){
+  Parse.Cloud.httpRequest({
+    url: "http://m.dining.ucla.edu/menu/index.cfm?restaurantType=Residential"
+  }).then(function(httpResponse) {
+    var html = httpResponse.text;
+    //to test if it works?
+    var test = new Parse.Object("CloudTest");
+    test.add("test", httpResponse.text);
+    console.log(httpResponse.text);
+    test.save();
+
+    //de neve
+    var deneve_re = new RegExp(/"visitorHeadings"\>\<a\shref="([^"]*)"\>De\sNeve/);
+    var deneveOut = deneve_re.exec(xhr.responseText);
+    console.log(deneveOut);
+    //covel
+    var bfast_re = new RegExp(/"visitorHeadings"\>\<a\shref="([^"]*)"\>Covel\sDining/);
+    var bfastOut = bfast_re.exec(xhr.responseText);
+    console.log(bfastOut);
+    //feast
+    var feast_re = new RegExp(/"visitorHeadings"\>\<a\shref="([^"]*)"\>FEAST\sAt\sRieber/)
+    var feastOut = feast_re.exec(xhr.responseText);
+    console.log(feastOut);
+      
+  }, function(HttpResponse) {
+    console.error('request failed dawg');
+  });
 //git commit -a
 //:wq
 //git push origin master
