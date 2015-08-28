@@ -210,3 +210,15 @@ Parse.Cloud.define("flushNutrients", function(request,response){
     obj.destroy();
   });
 });
+
+//test for schudule/background job
+
+Parse.Cloud.run('sendScheduledMessages', {
+    success: function() {
+        status.success();
+    },
+    error: function(error) {
+        status.error(error);
+    }
+});
+});
